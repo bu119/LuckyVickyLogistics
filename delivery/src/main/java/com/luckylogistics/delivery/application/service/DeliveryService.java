@@ -162,7 +162,7 @@ public class DeliveryService {
         // 권한 검증 (마스터/해당 허브관리자/업체배송담당자)
         validateStatusChangePermission(delivery, currentUserId, currentUserRole);
         // 상태 변경
-        delivery.changeStatus(request.status(), true);
+        delivery.changeStatus(request.status());
 
         log.info("[Delivery] 배송 상태 변경 완료. deliveryId: {}", deliveryId);
         return UpdateDeliveryResponse.from(delivery);

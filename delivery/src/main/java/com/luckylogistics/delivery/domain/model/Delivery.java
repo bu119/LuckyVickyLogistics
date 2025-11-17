@@ -117,24 +117,27 @@ public class Delivery extends BaseEntity {
     }
 
     /**
-     * 배송 상태 변경
-     * @param byApi true면 API 요청으로 인한 변경, false면 시스템 내부(허브 경로 전파 등)에 의한 변경
+     * 배송 상태 변경 (API 호출)
      */
-    public void changeStatus(DeliveryStatus newStatus, boolean byApi) {
+    public void changeStatus(DeliveryStatus newStatus) {
         // 상태 값 검증
         validateStatus(newStatus);
 
-        // API 호출일 때 허브 구간 상태로 변경 금지
-        if (byApi && newStatus.isHubPhase()) {
-            throw new IllegalStateException("허브 구간 상태로는 API로 직접 변경할 수 없습니다. 경로 진행으로만 변경됩니다.");
+        // API 호출은 허브 구간의 상태로 직접 변경할 수 없음
+        if (newStatus.isHubPhase()) {
+            throw new IllegalStateException(
+                    "허브 단계(HUB_WAITING/HUB_MOVING/HUB_ARRIVED)는 직접 변경할 수 없습니다. " +
+                            "해당 단계 변경은 허브 경로 진행에 따라 자동으로 처리됩니다."
+            );
         }
 
-        // 동일 상태면 무시
+        // 동일 상태면 변경하지 않음
         if (this.status == newStatus) return;
 
         // 상태 전환 규칙 검증
         this.status.validateTransition(newStatus);
-        // 업체 구간 전환 제약 검증
+
+        // 업체 배송 구간 제약 조건 검증
         validateCompanyPhaseTransition(newStatus);
 
         // 상태 변경
