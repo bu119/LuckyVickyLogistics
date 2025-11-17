@@ -22,12 +22,12 @@ eureka-server 먼저 실행 후 다른 서비스 실행
 ## 👨‍👩‍👧‍👦 팀원 소개
 | 이름                          | 프로필 | 담당 역할                                                                                                                                                |
 |-----------------------------| --- |------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [김부경](https://github.com/)  | <img src="https://github.com/user-attachments/assets/b8bd0eaf-8f5d-4024-9848-2a53ede5e331" width="120" />  | `배송`<br>배송 CRUD 기능 구현 <br>`배송담당자`<br>배송담당자 CRUD 기능 구현<br> `배송경로`<br>배송경로 조회 및 변경, 배송경로 알고리즘 개발<br>  `공통`<br>UserRole Enum 정의<br>에러코드 정의 및 예외 처리 핸들러<br> |
+| [김부경](https://github.com/)  | <img src="https://github.com/user-attachments/assets/b8bd0eaf-8f5d-4024-9848-2a53ede5e331" width="120" />  | `배송`<br>배송 CRUD 기능 구현<br>배송 생성 시 허브/업체 배송담당자 라운드 로빈 자동 배정 로직 개발<br>배송–배송경로 생성/삭제 동기화 로직 개발 <br>`배송담당자`<br>배송담당자 CRUD 기능 구현<br>타입별(허브/업체) 독립적인 순서(Sequence) 자동 부여 로직 개발<br> `배송경로`<br>배송경로 조회 및 변경 기능 구현<br>배송경로 상태-배송 상태 자동 동기화 로직 개발 <br>  `공통`<br>UserRole Enum 정의<br>에러코드 정의 및 예외 처리 핸들러 구현<br> |
 | [김진현](https://github.com/)  | <img src="https://github.com/user-attachments/assets/96c5ca6f-c366-49d6-9756-7c0939cbed92" width="120" /> | `상품`<br>상품 CRUD 기능 구현<br>상품 상태 실시간 확인 및 재고 변경 로직 개발<br>`주문`<br>주문 RUD 개발<br>`공통`<br>각 서비스 권한별 분기 처리                                                  |
 | [김채연](https://github.com/)  | <img src="https://github.com/user-attachments/assets/b4584ff5-1479-44c4-8f6d-d3e94e9aba44" width="120" />  | `업체`<br>업체 CRUD 기능 구현<br> `Gateway`<br>gateWay 세팅<br> `공통` <br>프로젝트의 전반 공통 기능들을 common 으로 마이그레이션 하며 기타 오류 처리<br>                                     |
 | [이건희](https://github.com/)  | <img src="https://github.com/user-attachments/assets/b97a3423-1711-4175-a44e-55d74128ce69" width="120" />  | `Slack`<br>메세지 발송,목록 조회, 상태 수정, 삭제 구현<br> `AI`<br>Gemini를 사용해 프롬프트 CRUD 기능 구현 <br>`주문`<br>주문 C 개발 + Kafka 처리<br>                                     |
 | [이예나](https://github.com/)  | <img src="https://github.com/user-attachments/assets/26eefb33-ed31-44d1-97ba-37e58311f492" width="120" /> | `사용자`<br>회원가입 및 로그인 처리, 회원 관리 기능 개발 <br>`인증/인가`<br>JWT 인증 구현<br>                                                                                     |
-| [홍태휘](https://github.com/)  | <img src="https://github.com/user-attachments/assets/f932bc07-3d66-4220-a462-4cbefd816fd4" width="120" />  | `허브`<br>허브 CRUD 기능 개발 및 허브의 위도,경도를 포함한 데이터 기본 세팅<br>`배송경로`<br>배송경로 알고리즘 개발</br>                                                                      |
+| [홍태휘](https://github.com/)  | <img src="https://github.com/user-attachments/assets/f932bc07-3d66-4220-a462-4cbefd816fd4" width="120" />  | `허브`<br>허브 CRUD 기능 개발 및 허브의 위도,경도를 포함한 데이터 기본 세팅<br>`허브경로`<br>허브경로 알고리즘 개발</br>                                                                      |
 ## 🚀 기술 스택
 
 Category | Stack
