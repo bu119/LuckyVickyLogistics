@@ -154,12 +154,24 @@ public class Delivery extends BaseEntity {
     private void validateCompanyPhaseTransition(DeliveryStatus nextStatus) {
         // HUB_ARRIVED 이후에만 업체 배송 시작 가능
         if (nextStatus.isCompanyMoving() && !this.status.isHubArrived()) {
-            throw new IllegalStateException("목적지 허브 도착(HUB_ARRIVED) 이후에만 업체 배송을 시작할 수 있습니다.");
+            throw new IllegalStateException(
+                    "%s(%s) 이후에만 업체 배송을 시작할 수 있습니다."
+                            .formatted(
+                                    DeliveryStatus.HUB_ARRIVED.getDescription(),
+                                    DeliveryStatus.HUB_ARRIVED.name()
+                            )
+            );
         }
 
         // COMPANY_MOVING 이후에만 배송 완료 가능
         if (nextStatus.isCompleted() && !this.status.isCompanyMoving()) {
-            throw new IllegalStateException("업체 배송 중(COMPANY_MOVING) 상태에서만 배송 완료가 가능합니다.");
+            throw new IllegalStateException(
+                    "%s(%s) 상태에서만 배송 완료가 가능합니다."
+                            .formatted(
+                                    DeliveryStatus.COMPANY_MOVING.getDescription(),
+                                    DeliveryStatus.COMPANY_MOVING.name()
+                            )
+            );
         }
     }
 
